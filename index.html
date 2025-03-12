@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neubrutalism Registration Form</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #ffd166;
+            --background-color: #f9f6f0;
+            --text-color: #121212;
+            --shadow-color: #000000;
+        }
+        
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        
+        .neubrutalism-box {
+            background-color: white;
+            border: 3px solid var(--text-color);
+            box-shadow: 5px 5px 0 var(--shadow-color);
+            transition: all 0.2s ease;
+        }
+        
+        .neubrutalism-box:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 var(--shadow-color);
+        }
+        
+        .neubrutalism-input {
+            border: 3px solid var(--text-color);
+            box-shadow: 3px 3px 0 var(--shadow-color);
+            transition: all 0.2s ease;
+            background-color: white;
+        }
+        
+        .neubrutalism-input:focus {
+            outline: none;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--shadow-color);
+        }
+        
+        .neubrutalism-button {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            border: 3px solid var(--text-color);
+            box-shadow: 3px 3px 0 var(--shadow-color);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+        
+        .neubrutalism-button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 var(--shadow-color);
+        }
+        
+        .neubrutalism-button:active {
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0 var(--shadow-color);
+        }
+        
+        .radio-container {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        
+        .radio-container input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border: 3px solid var(--text-color);
+            border-radius: 50%;
+            background-color: white;
+            margin-right: 8px;
+            box-shadow: 2px 2px 0 var(--shadow-color);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .radio-container input[type="radio"]:checked::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 12px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+        }
+        
+        .success-message {
+            background-color: #06d6a0;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        
+        .success-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .error-message {
+            color: #e63946;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            margin-left: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+    <div class="neubrutalism-box w-full max-w-md p-8 mx-auto">
+        <h1 class="text-2xl font-bold mb-6">Registration Form</h1>
+        
+        <form id="registrationForm" class="space-y-4">
+            <!-- Email Field -->
+            <div>
+                <label for="email" class="block mb-1 font-bold">Email address</label>
+                <input type="email" id="email" name="email" placeholder="Email address" required
+                    class="neubrutalism-input w-full px-4 py-3 text-lg">
+                <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            
+            <!-- Password Field -->
+            <div>
+                <label for="password" class="block mb-1 font-bold">Password</label>
+                <input type="password" id="password" name="password" placeholder="Password" required
+                    class="neubrutalism-input w-full px-4 py-3 text-lg">
+                <div class="error-message" id="passwordError">Password must be at least 6 characters</div>
+            </div>
+            
+            <!-- First Name Field -->
+            <div>
+                <label for="firstName" class="block mb-1 font-bold">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required
+                    class="neubrutalism-input w-full px-4 py-3 text-lg">
+                <div class="error-message" id="firstNameError">First name is required</div>
+            </div>
+            
+            <!-- Last Name Field -->
+            <div>
+                <label for="lastName" class="block mb-1 font-bold">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required
+                    class="neubrutalism-input w-full px-4 py-3 text-lg">
+                <div class="error-message" id="lastNameError">Last name is required</div>
+            </div>
+            
+            <!-- Gender Field -->
+            <div>
+                <label class="block mb-2 font-bold">Gender</label>
+                <div class="flex">
+                    <div class="radio-container">
+                        <input type="radio" id="male" name="gender" value="male" required>
+                        <label for="male">Male</label>
+                    </div>
+                    <div class="radio-container">
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                    </div>
+                </div>
+                <div class="error-message" id="genderError">Please select a gender</div>
+            </div>
+            
+            <!-- Address Field -->
+            <div>
+                <label for="address" class="block mb-1 font-bold">Address</label>
+                <input type="text" id="address" name="address" placeholder="Address" required
+                    class="neubrutalism-input w-full px-4 py-3 text-lg">
+                <div class="error-message" id="addressError">Address is required</div>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="neubrutalism-button w-32 py-3 px-4 text-lg">
+                Submit
+            </button>
+        </form>
+        
+        <!-- Success Message (Hidden by default) -->
+        <div id="successMessage" class="success-message neubrutalism-box mt-4 p-4 text-white font-bold hidden">
+            Registration successful! Thank you for signing up.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('registrationForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Error displays
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const firstNameError = document.getElementById('firstNameError');
+            const lastNameError = document.getElementById('lastNameError');
+            const genderError = document.getElementById('genderError');
+            const addressError = document.getElementById('addressError');
+            
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                let isValid = true;
+                
+                // Reset all error messages
+                const errorMessages = document.querySelectorAll('.error-message');
+                errorMessages.forEach(msg => msg.style.display = 'none');
+                
+                // Validate Email
+                const email = document.getElementById('email').value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(email)) {
+                    emailError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate Password
+                const password = document.getElementById('password').value;
+                if (password.length < 6) {
+                    passwordError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate First Name
+                const firstName = document.getElementById('firstName').value;
+                if (firstName.trim() === '') {
+                    firstNameError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate Last Name
+                const lastName = document.getElementById('lastName').value;
+                if (lastName.trim() === '') {
+                    lastNameError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate Gender
+                const genderSelected = document.querySelector('input[name="gender"]:checked');
+                if (!genderSelected) {
+                    genderError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validate Address
+                const address = document.getElementById('address').value;
+                if (address.trim() === '') {
+                    addressError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                if (isValid) {
+                    // Form is valid, show success message
+                    successMessage.classList.remove('hidden');
+                    successMessage.classList.add('show');
+                    
+                    // Reset the form
+                    form.reset();
+                    
+                    // Hide success message after 3 seconds
+                    setTimeout(function() {
+                        successMessage.classList.remove('show');
+                        setTimeout(function() {
+                            successMessage.classList.add('hidden');
+                        }, 300);
+                    }, 3000);
+                }
+            });
+            
+            // Focus/blur effects for inputs to enhance user experience
+            const inputs = document.querySelectorAll('.neubrutalism-input');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.style.backgroundColor = '#fffeeb';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.style.backgroundColor = 'white';
+                });
+            });
+        });
+    </script>
+<script>document.body.addEventListener('wheel', e => { if (!e.ctrlKey) return; e.preventDefault(); return }, { passive: false })</script>
+	</body>
+</html>
